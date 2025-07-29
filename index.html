@@ -22,48 +22,93 @@
         <h1 class="description">Track IP Addresses And Phone Numbers</h1>
         
         <div class="tab">
-            <button class="switch selected">IP Address</button>
-            <button class="switch">Phone Num</button>
+            <button class="switch selected" id="ip">IP Address</button>
+            <button class="switch" id="phone">Phone Num</button>
         </div>
 
-        <div class="input-section">
-            <input type="text" id="ip-input" class="search" placeholder="Enter IP-Address">
-            <input type="button" value="Track" id="track" class="track">
-        </div>
+            <div class="ip-input-section input-section">
+                <input type="text" id="ip-input" class="search" placeholder="Enter Valid IP-Address">
+                <input type="button" value="Track" id="track" class="track">
+            </div>
+
+            <div class="phone-input-section input-section hidden">
+                <input type="text" id="ip-input" class="search" placeholder="Enter Valid Phone Number">
+                <input type="button" value="Track" id="track" class="track">
+            </div>
 
         <div class="info-section">
             <h2>Results</h2>
 
             <div class="infosec">
-                <div class="infosec1">
-                    <div class="ip-section">
-                        <small>IP Address</small>
-                        <span>192.168.1.1</span>
+
+                <div class="grp1">
+                    <div class="infosec1">
+                        <div class="ip-address">
+                            <small>IP Address</small>
+                            <span>192.168.1.1</span>
+                        </div>
+                        <div class='city'>
+                            <small>City</small>
+                            <span>Mountain View</span>
+                        </div>
+                        <div class="country">
+                            <small>Country</small>
+                            <span>USA</span>
+                        </div>
                     </div>
-                    <div class='location'>
-                        <small>Location</small>
-                        <span>New York,NY</span>
-                    </div>
-                    <div class="country">
-                        <small>Country</small>
-                        <span>USA</span>
-                    </div>
-                </div>
                 
-                <div class="infosec2">
-                    <div class="isp-section">
-                        <small>ISP</small>
-                        <span>Verizon</span>
-                    </div>
-                    <div class='org'>
-                        <small>Organisation</small>
-                        <span>Acme Corp</span>
-                    </div>
-                    <div class="time-zone">
-                        <small>Time Zone</small>
-                        <span>EST</span>
+                    <div class="infosec2">
+                        <div class="longitude">
+                            <small>Latitude</small>
+                            <span>37.386</span>
+                        </div>
+                        <div class='latitude'>
+                            <small>Longitude</small>
+                            <span> -122.0838</span>
+                        </div>
+                        <div class="org">
+                            <small>Organization</small>
+                            <span>Google LLC</span>
+                        </div>
                     </div>
                 </div>
+
+                <div class="grp2">
+                    <div class="infosec3">
+                        <div class="version">
+                            <small>Version</small>
+                            <span>IPv4</span>
+                        </div>
+
+                        <div class="time-zone">
+                            <small>Timezone</small>
+                            <span>America/Los_Angeles</span>
+                        </div>
+
+                        <div class="capital">
+                            <small>Capital</small>
+                            <span>Washington</span>
+                        </div>
+                    </div>
+
+                    <div class="infosec4">
+                        <div class="postal">
+                            <small>Postal</small>
+                            <span>94035</span>
+                        </div>
+
+                        <div class="asn">
+                            <small>ASN</small>
+                            <span>AS15169</span>
+                        </div>
+
+                        <div class="currency">
+                            <small>Currency</small>
+                            <span>Dollar</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
