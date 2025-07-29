@@ -130,6 +130,11 @@ small{
     color: #4A879C;
 }
 
+.grp1, .grp2{
+    display: flex;
+    gap: 10rem;
+}
+
 
 @media(width <= 768px){
     main{
