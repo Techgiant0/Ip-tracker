@@ -4,6 +4,7 @@ const ipInput = document.getElementsByClassName('ip-input-section')[0]
 const phoneInput = document.getElementsByClassName('phone-input-section')[0]
 const ipSection = document.querySelector('.ip-section')
 const phoneSection = document.querySelector('.phone-section')
+const map = document.getElementsByClassName('map-section')[0]
 
 phoneToggle.addEventListener('click',()=>{
     phoneToggle.classList.add('selected')
@@ -12,6 +13,7 @@ phoneToggle.addEventListener('click',()=>{
     phoneInput.classList.remove('hidden')
     ipSection.classList.add('hidden')
     phoneSection.classList.remove('hidden')
+    map.classList.add('hidden')
 })
 
 ipToggle.addEventListener('click',()=>{
@@ -21,4 +23,5 @@ ipToggle.addEventListener('click',()=>{
     ipInput.classList.remove('hidden')
     ipSection.classList.remove('hidden')
     phoneSection.classList.add('hidden')
+    map.classList.remove('hidden')
 })
