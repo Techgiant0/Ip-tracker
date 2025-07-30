@@ -90,7 +90,7 @@ main{
     background-color: #48c6f4;
 }
 
-.hidden{
+.hidden, .infosec .hidden{
     display: none;
 }
 
@@ -98,10 +98,18 @@ main{
     margin-bottom: 30px;
 }
 
-.infosec{
-    margin-top: 20px;
+.ip-section{
     display: flex;
     justify-content: space-between;
+}
+
+.phone-section{
+    display: flex;
+    gap: 20rem;
+}
+
+.infosec{
+    margin-top: 20px;
 }
 
 .infosec1, .infosec2, .infosec3, .infosec4{
@@ -121,6 +129,11 @@ main{
 .postal,
 .asn,
 .currency,
+.phone-number,
+.format,
+.location,
+.type,
+.carrier,
 .time-zone{
     display: flex;
     flex-direction: column;
@@ -132,7 +145,7 @@ small{
 
 .grp1, .grp2{
     display: flex;
-    gap: 10rem;
+    gap: 11rem;
 }
 
 
@@ -146,7 +159,7 @@ small{
         text-align: center;
     }
 
-    .infosec{
+    .ip-section{
         flex-direction: column;
         gap: 1rem;
     }
@@ -174,5 +187,9 @@ small{
 
     .infosec1, .infosec2, .infosec3, .infosec4{
         gap: 1rem;
+    }
+
+    .phone-section{
+        gap: 5rem;
     }
 }
