@@ -201,4 +201,8 @@ small{
         display: block;
         color: #ed0a19;
     }
+
+    #grp2{
+        display: none;
+    }
 }

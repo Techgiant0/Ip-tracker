@@ -29,14 +29,16 @@ ipToggle.addEventListener('click',()=>{
     map.classList.remove('hidden')
 })
 
-moreInfo.addEventListener('click', ()=>{
-    grp.classList.remove('hidden')
-    moreInfo.classList.add('hidden')
-    lessInfo.classList.remove('hidden')
-})
+if(window.innerWidth <= 768){
+    moreInfo.addEventListener('click', ()=>{
+        grp.style.display = 'flex'
+        moreInfo.classList.add('hidden')
+        lessInfo.classList.remove('hidden')
+    })
 
-lessInfo.addEventListener('click', ()=>{
-    grp.classList.add('hidden')
-    moreInfo.classList.remove('hidden')
-    lessInfo.classList.add('hidden')
-})
+    lessInfo.addEventListener('click', ()=>{
+        grp.style.display = 'none'
+        moreInfo.classList.remove('hidden')
+        lessInfo.classList.add('hidden')
+    })
+}
