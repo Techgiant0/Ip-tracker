@@ -75,7 +75,7 @@ function updatePageWithData(data) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const isDev = true; // Set to true if you want to use the mock data
+  const isDev = false; // Set to true if you want to use the mock data
   const apiUrl = isDev ? './mock-api-response.json' : 'https://ipapi.co/json/';
   let map;
 
