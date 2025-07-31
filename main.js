@@ -88,8 +88,16 @@ function hideLoadingState(){
 
 document.addEventListener('DOMContentLoaded', async () => {
   const isDev = false; // Set to true if you want to use the mock data
-  const apiUrl = isDev ? './mock-api-response.json' : 'https://ipapi.co/json/';
+  let apiUrl
   let map;
+
+   if (!isDev) {
+        devMode.style.display = 'none';
+        apiUrl = `https://ipapi.co/json/`;
+    } else {
+        devMode.style.display = 'block';
+        apiUrl = `./mock-api-response.json`;
+    }
 
   showLoadingState()
   try {
