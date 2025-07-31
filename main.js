@@ -4,7 +4,7 @@ const ipInputSection = document.getElementsByClassName('ip-input-section')[0]
 const phoneInputSection = document.getElementsByClassName('phone-input-section')[0]
 const ipSection = document.querySelector('.ip-section')
 const phoneSection = document.querySelector('.phone-section')
-const map = document.getElementsByClassName('map-section')[0]
+let map = document.getElementById('map')
 const lessInfo = document.getElementById('less-info')
 const moreInfo = document.getElementById('more-info')
 const grp = document.getElementById('grp2')
@@ -74,24 +74,36 @@ function updatePageWithData(data) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const isDev = false;
-    let apiUrl;
+  const isDev = false; // Set to true if you want to use the mock data
+  const apiUrl = isDev ? './mock-api-response.json' : 'https://ipapi.co/json/';
+  let map;
 
-    if (!isDev) {
-        devMode.style.display = 'none';
-        apiUrl = `https://ipapi.co/json/`;
-    } else {
-        devMode.style.display = 'block';
-        apiUrl = `./mock-api-response.json`;
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const lat = data.latitude;
+    const lon = data.longitude;
+
+    // Initialize map only once
+    if (!map) {
+      map = L.map('map').setView([lat, lon], 13);
+
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
     }
 
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+    // Add marker
+    L.marker([lat, lon])
+      .addTo(map)
+      .bindPopup(`You're here: ${data.city}, ${data.country_name}`)
+      .openPopup();
 
-        updatePageWithData(data);
-
-    } catch (error) {
-        console.error(error);
-    }
+    // Display the rest of your data on the page
+    updatePageWithData(data);
+  } catch (error) {
+    console.error('Error loading IP data:', error);
+  }
 });

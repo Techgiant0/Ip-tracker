@@ -164,6 +164,18 @@ small{
     margin-bottom: 20px;
 }
 
+.map-section{
+    margin-bottom: 20px;
+}
+
+#map{ 
+    height: 180px; 
+}
+
+footer{
+    padding: 0.5rem 0;
+}
+
 @media(width <= 768px){
     main{
         margin: 0 20px;
