@@ -148,6 +148,10 @@ small{
     gap: 11rem;
 }
 
+#show-more{
+    display: none;
+}
+
 
 @media(width <= 768px){
     main{
@@ -191,5 +195,10 @@ small{
 
     .phone-section{
         gap: 5rem;
+    }
+
+    #show-more{
+        display: block;
+        color: #ed0a19;
     }
 }
