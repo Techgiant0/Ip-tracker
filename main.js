@@ -24,6 +24,8 @@ let capital = document.getElementById('capital')
 let network = document.getElementById('network')
 let asn = document.getElementById('asn')
 let currency = document.getElementById('currency')
+let loader = document.getElementById('loader-section')
+let infosec = document.getElementById('infosec')
 
 phoneToggle.addEventListener('click',()=>{
     phoneToggle.classList.add('selected')
@@ -62,7 +64,7 @@ if(window.innerWidth <= 768){
 function updatePageWithData(data) {
     ip.textContent = data.ip;
     city.textContent = data.city;
-    country.textContent = data.country;
+    country.textContent = data.country_name;
     asn.textContent = data.asn;
     latitude.textContent = data.latitude;
     longitude.textContent = data.longitude;
@@ -74,13 +76,27 @@ function updatePageWithData(data) {
     currency.textContent = data.currency_name;
 }
 
+function showLoadingState(){
+    loader.style.display = 'flex'
+    infosec.classList.add('hidden')
+}
+
+function hideLoadingState(){
+    loader.style.display = 'none'
+    infosec.classList.remove('hidden')
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   const isDev = false; // Set to true if you want to use the mock data
   const apiUrl = isDev ? './mock-api-response.json' : 'https://ipapi.co/json/';
   let map;
 
+  showLoadingState()
   try {
     const response = await fetch(apiUrl);
+    if(!response.ok){
+        throw new Error(`HTTP error status: ${response.status}`)
+    }
     const data = await response.json();
 
     const lat = data.latitude;
@@ -104,6 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Display the rest of your data on the page
     updatePageWithData(data);
+    hideLoadingState()
   } catch (error) {
     console.error('Error loading IP data:', error);
   }
