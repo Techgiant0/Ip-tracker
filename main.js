@@ -58,51 +58,40 @@ if(window.innerWidth <= 768){
     })
 }
 
-document.addEventListener('DOMContentLoaded', async()=>{
-    const isDev = false
+function updatePageWithData(data) {
+    ip.textContent = data.ip;
+    city.textContent = data.city;
+    country.textContent = data.country;
+    asn.textContent = data.asn;
+    latitude.textContent = data.latitude;
+    longitude.textContent = data.longitude;
+    organisation.textContent = data.org;
+    capital.textContent = data.country_capital;
+    version.textContent = data.version;
+    timezone.textContent = data.timezone;
+    network.textContent = data.network;
+    currency.textContent = data.currency_name;
+}
 
-    if(!isDev){
-        devMode.style.display = 'none'
-        try {
-            const response = await fetch(`https://ipapi.co/json/`);
-            const data = await response.json();
+document.addEventListener('DOMContentLoaded', async () => {
+    const isDev = false;
+    let apiUrl;
 
-            ip.textContent = data.ip
-            city.textContent = data.city
-            country.textContent = data.country
-            asn.textContent = data.asn
-            latitude.textContent = data.latitude
-            longitude.textContent = data.longitude
-            organisation.textContent = data.org
-            capital.textContent = data.country_capital
-            version.textContent = data.version
-            timezone.textContent = data.timezone
-            network.textContent = data.network
-            currency.textContent = data.currency_name
-        } catch (error) {
-            console.error(error);
-        }
-    }else{
-        devMode.style.display = 'block'
-        try {
-            const response = await fetch(`./mock-api-response.json`);
-            const data = await response.json();
-            console.log(data);
-
-            ip.textContent = data.ip
-            city.textContent = data.city
-            country.textContent = data.country
-            asn.textContent = data.asn
-            latitude.textContent = data.latitude
-            longitude.textContent = data.longitude
-            organisation.textContent = data.org
-            capital.textContent = data.country_capital
-            version.textContent = data.version
-            timezone.textContent = data.timezone
-            network.textContent = data.network
-            currency.textContent = data.currency_name
-        } catch (error) {
-            console.error(error);
-        }
+    if (!isDev) {
+        devMode.style.display = 'none';
+        apiUrl = `https://ipapi.co/json/`;
+    } else {
+        devMode.style.display = 'block';
+        apiUrl = `./mock-api-response.json`;
     }
-})
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        updatePageWithData(data);
+
+    } catch (error) {
+        console.error(error);
+    }
+});
