@@ -30,6 +30,9 @@ hr{
 
 main{
     margin: 0 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .tab{
@@ -126,7 +129,7 @@ main{
 .org, 
 .version,
 .capital,
-.postal,
+.network,
 .asn,
 .currency,
 .phone-number,
@@ -152,6 +155,14 @@ small{
     display: none;
 }
 
+#devMode{
+    background-color: #f57a82;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
 
 @media(width <= 768px){
     main{

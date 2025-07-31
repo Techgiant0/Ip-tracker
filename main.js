@@ -1,19 +1,34 @@
 const ipToggle = document.getElementById('ip')
 const phoneToggle = document.getElementById('phone')
-const ipInput = document.getElementsByClassName('ip-input-section')[0]
-const phoneInput = document.getElementsByClassName('phone-input-section')[0]
+const ipInputSection = document.getElementsByClassName('ip-input-section')[0]
+const phoneInputSection = document.getElementsByClassName('phone-input-section')[0]
 const ipSection = document.querySelector('.ip-section')
 const phoneSection = document.querySelector('.phone-section')
 const map = document.getElementsByClassName('map-section')[0]
 const lessInfo = document.getElementById('less-info')
 const moreInfo = document.getElementById('more-info')
 const grp = document.getElementById('grp2')
+const ipInput = document.getElementById('ip-input')
+const phoneInput = document.getElementById('phone-input')
+const devMode = document.getElementById('devMode')
+let ip = document.getElementById('ip-address')
+let city = document.getElementById('city')
+let country = document.getElementById('country')
+let timezone = document.getElementById('timezone')
+let latitude = document.getElementById('lat')
+let longitude = document.getElementById('long')
+let organisation = document.getElementById('org')
+let version = document.getElementById('version')
+let capital = document.getElementById('capital')
+let network = document.getElementById('network')
+let asn = document.getElementById('asn')
+let currency = document.getElementById('currency')
 
 phoneToggle.addEventListener('click',()=>{
     phoneToggle.classList.add('selected')
     ipToggle.classList.remove('selected')
-    ipInput.classList.add('hidden')
-    phoneInput.classList.remove('hidden')
+    ipInputSection.classList.add('hidden')
+    phoneInputSection.classList.remove('hidden')
     ipSection.classList.add('hidden')
     phoneSection.classList.remove('hidden')
     map.classList.add('hidden')
@@ -22,8 +37,8 @@ phoneToggle.addEventListener('click',()=>{
 ipToggle.addEventListener('click',()=>{
     ipToggle.classList.add('selected')
     phoneToggle.classList.remove('selected')
-    phoneInput.classList.add('hidden')
-    ipInput.classList.remove('hidden')
+    phoneInputSection.classList.add('hidden')
+    ipInputSection.classList.remove('hidden')
     ipSection.classList.remove('hidden')
     phoneSection.classList.add('hidden')
     map.classList.remove('hidden')
@@ -42,3 +57,52 @@ if(window.innerWidth <= 768){
         lessInfo.classList.add('hidden')
     })
 }
+
+document.addEventListener('DOMContentLoaded', async()=>{
+    const isDev = false
+
+    if(!isDev){
+        devMode.style.display = 'none'
+        try {
+            const response = await fetch(`https://ipapi.co/json/`);
+            const data = await response.json();
+
+            ip.textContent = data.ip
+            city.textContent = data.city
+            country.textContent = data.country
+            asn.textContent = data.asn
+            latitude.textContent = data.latitude
+            longitude.textContent = data.longitude
+            organisation.textContent = data.org
+            capital.textContent = data.country_capital
+            version.textContent = data.version
+            timezone.textContent = data.timezone
+            network.textContent = data.network
+            currency.textContent = data.currency_name
+        } catch (error) {
+            console.error(error);
+        }
+    }else{
+        devMode.style.display = 'block'
+        try {
+            const response = await fetch(`./mock-api-response.json`);
+            const data = await response.json();
+            console.log(data);
+
+            ip.textContent = data.ip
+            city.textContent = data.city
+            country.textContent = data.country
+            asn.textContent = data.asn
+            latitude.textContent = data.latitude
+            longitude.textContent = data.longitude
+            organisation.textContent = data.org
+            capital.textContent = data.country_capital
+            version.textContent = data.version
+            timezone.textContent = data.timezone
+            network.textContent = data.network
+            currency.textContent = data.currency_name
+        } catch (error) {
+            console.error(error);
+        }
+    }
+})

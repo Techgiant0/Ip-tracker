@@ -20,7 +20,7 @@
 
     <main>
         <h1 class="description">Track IP Addresses And Phone Numbers</h1>
-        
+        <span id="devMode">development mode</span>
         <div class="tab">
             <button class="switch selected" id="ip">IP Address</button>
             <button class="switch" id="phone">Phone Number</button>
@@ -33,7 +33,7 @@
 
             <div class="phone-input-section input-section hidden">
                 <input type="text" id="phone-input" class="search" placeholder="Enter Valid Phone Number">
-                <input type="button" value="Track" id="track" class="track">
+                <input type="button" value="Track" id="track-phone" class="track">
             </div>
 
         <div class="info-section">
@@ -47,30 +47,30 @@
                         <div class="infosec1">
                             <div class="ip-address">
                                 <small>🌐IP Address</small>
-                                <span>192.168.1.1</span>
+                                <span id="ip-address">192.168.1.1</span>
                             </div>
                             <div class='city'>
                                 <small>🏙️City</small>
-                                <span>Mountain View</span>
+                                <span id="city">Mountain View</span>
                             </div>
                             <div class="country">
                                 <small>🌎Country</small>
-                                <span>USA</span>
+                                <span id="country">USA</span>
                             </div>
                         </div>
                     
                         <div class="infosec2">
                             <div class="longitude">
                                 <small>🚥Latitude</small>
-                                <span>37.386</span>
+                                <span id="lat">37.386</span>
                             </div>
                             <div class='latitude'>
                                 <small>🚦Longitude</small>
-                                <span> -122.0838</span>
+                                <span id="long"> -122.0838</span>
                             </div>
                             <div class="org">
                                 <small>🥅Organization</small>
-                                <span>Google LLC</span>
+                                <span id="org">Google LLC</span>
                             </div>
                         </div>
                     </div>
@@ -79,34 +79,34 @@
                         <div class="infosec3">
                             <div class="capital">
                                 <small>🧢Capital</small>
-                                <span>Washington</span>
+                                <span id="capital">Washington</span>
                             </div>
 
                             <div class="version">
                                 <small>🆚Version</small>
-                                <span>IPv4</span>
+                                <span id="version">IPv4</span>
                             </div>
 
                             <div class="time-zone">
                                 <small>⌚Timezone</small>
-                                <span>UTC</span>
+                                <span id="timezone">UTC</span>
                             </div>
                         </div>
 
                         <div class="infosec4">
-                            <div class="postal">
-                                <small>📬Postal</small>
-                                <span>94035</span>
+                            <div class="network">
+                                <small>🕸️Network</small>
+                                <span id="network">94035</span>
                             </div>
 
                             <div class="asn">
                                 <small>🧑‍💻ASN</small>
-                                <span>AS15169</span>
+                                <span id="asn">AS15169</span>
                             </div>
 
                             <div class="currency">
                                 <small>💵Currency</small>
-                                <span>Dollar</span>
+                                <span id="currency">Dollar</span>
                             </div>
                         </div>
                     </div>
