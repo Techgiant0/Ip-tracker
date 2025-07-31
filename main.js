@@ -5,6 +5,7 @@ const phoneInputSection = document.getElementsByClassName('phone-input-section')
 const ipSection = document.querySelector('.ip-section')
 const phoneSection = document.querySelector('.phone-section')
 let map = document.getElementById('map')
+let mapContainer = document.getElementById('map-section')
 const lessInfo = document.getElementById('less-info')
 const moreInfo = document.getElementById('more-info')
 const grp = document.getElementById('grp2')
@@ -31,7 +32,7 @@ phoneToggle.addEventListener('click',()=>{
     phoneInputSection.classList.remove('hidden')
     ipSection.classList.add('hidden')
     phoneSection.classList.remove('hidden')
-    map.classList.add('hidden')
+    mapContainer.classList.add('hidden')
 })
 
 ipToggle.addEventListener('click',()=>{
@@ -41,7 +42,7 @@ ipToggle.addEventListener('click',()=>{
     ipInputSection.classList.remove('hidden')
     ipSection.classList.remove('hidden')
     phoneSection.classList.add('hidden')
-    map.classList.remove('hidden')
+    mapContainer.classList.remove('hidden')
 })
 
 if(window.innerWidth <= 768){
@@ -74,7 +75,7 @@ function updatePageWithData(data) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const isDev = false; // Set to true if you want to use the mock data
+  const isDev = true; // Set to true if you want to use the mock data
   const apiUrl = isDev ? './mock-api-response.json' : 'https://ipapi.co/json/';
   let map;
 

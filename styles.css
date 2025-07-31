@@ -6,6 +6,9 @@
 
 body{
     background-color: #F7FAFC;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .logo{
@@ -164,7 +167,7 @@ small{
     margin-bottom: 20px;
 }
 
-.map-section{
+#map-section{
     margin-bottom: 20px;
 }
 
