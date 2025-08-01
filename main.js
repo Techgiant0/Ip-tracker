@@ -90,7 +90,7 @@ function hideLoadingState(){
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const isDev = false; // Set to true if you want to use the mock data
+  const isDev = true; // Set to true if you want to use the mock data
   let apiUrl
 
    if (!isDev) {
@@ -139,7 +139,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 ipBtn.addEventListener('click', async () => {
     showLoadingState()
     const searchIp = ipInput.value
-    if(!searchIp){
+    const ipAddress = searchIp.trim()
+    if(!ipAddress){
         alertBox.textContent = 'Please enter a valid IP Address to search'
         alertBox.style.display = 'block'
         setTimeout(function() {
@@ -148,13 +149,13 @@ ipBtn.addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch(`https://ipapi.co/${searchIp.trim()}/json/`)
+        const response = await fetch(`https://ipapi.co/${ipAddress}/json/`)
         if(response.status === 404){
             alertBox.textContent = 'IP Address Not Found ☹️'
             alertBox.style.display = 'block'
             setTimeout(function() {
                 alertBox.style.display = 'none';
-            }, 3000);
+            }, 5000);
             return
         }else if(!response.ok){
             console.log(`There was an error: ${response.status}`)
@@ -162,14 +163,15 @@ ipBtn.addEventListener('click', async () => {
         }
 
         const data = await response.json()
-        if(data.reserved){
-            alertBox.textContent = `You can't access ${data.ip}, it's reserved ☹️`
+        if(data.error){
+            alertBox.textContent = `You can't access ${data.ip}, ☹️. Reason: ${data.reason}`
             alertBox.style.display = 'block'
             setTimeout(function() {
                 alertBox.style.display = 'none';
-            }, 3000);
+            }, 5000);
             return
         }
+        console.log(data)
         const lat = data.latitude;
         const lon = data.longitude;
 
