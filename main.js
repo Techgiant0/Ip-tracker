@@ -4,7 +4,7 @@ const ipInputSection = document.getElementsByClassName('ip-input-section')[0]
 const phoneInputSection = document.getElementsByClassName('phone-input-section')[0]
 const ipSection = document.querySelector('.ip-section')
 const phoneSection = document.querySelector('.phone-section')
-let map = document.getElementById('map')
+let map
 let mapContainer = document.getElementById('map-section')
 const lessInfo = document.getElementById('less-info')
 const moreInfo = document.getElementById('more-info')
@@ -92,7 +92,6 @@ function hideLoadingState(){
 document.addEventListener('DOMContentLoaded', async () => {
   const isDev = false; // Set to true if you want to use the mock data
   let apiUrl
-  let map;
 
    if (!isDev) {
         devMode.style.display = 'none';
@@ -163,6 +162,26 @@ ipBtn.addEventListener('click', async () => {
         }
 
         const data = await response.json()
+
+        const lat = data.latitude;
+        const lon = data.longitude;
+
+        // Initialize map only once
+        if (!map) {
+        map = L.map('map').setView([lat, lon], 13);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        }
+
+        // Add marker
+        L.marker([lat, lon])
+        .addTo(map)
+        .bindPopup(`You're here: ${data.city}, ${data.country_name}`)
+        .openPopup();
+
         updatePageWithData(data)
         hideLoadingState()
     } catch (error) {
