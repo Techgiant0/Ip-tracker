@@ -26,6 +26,9 @@ let asn = document.getElementById('asn')
 let currency = document.getElementById('currency')
 let loader = document.getElementById('loader-section')
 let infosec = document.getElementById('infosec')
+let ipBtn = document.getElementById('track')
+let phoneBtn = document.getElementById('track-phone')
+let alertBox = document.getElementById('alert')
 
 phoneToggle.addEventListener('click',()=>{
     phoneToggle.classList.add('selected')
@@ -133,3 +136,38 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Error loading IP data:', error);
   }
 });
+
+ipBtn.addEventListener('click', async () => {
+    showLoadingState()
+    const searchIp = ipInput.value
+    if(!searchIp){
+        alertBox.textContent = 'Please enter a valid IP Address to search'
+        alertBox.style.display = 'block'
+        setTimeout(function() {
+            alertBox.style.display = 'none';
+        }, 3000);
+    }
+
+    try {
+        const response = await fetch(`https://ipapi.co/${searchIp}/json/`)
+        if(response.status === 404){
+            alertBox.textContent = 'IP Address Not Found ☹️'
+            alertBox.style.display = 'block'
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+            }, 3000);
+            return
+        }else if(!response.ok){
+            console.log(`There was an error: ${response.status}`)
+            return
+        }
+
+        const data = await response.json()
+        updatePageWithData(data)
+        hideLoadingState()
+    } catch (error) {
+        console.error(`Error description: ${error}`)
+    }finally{
+        hideLoadingState()
+    }
+})
