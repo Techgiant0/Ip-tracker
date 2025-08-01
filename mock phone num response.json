@@ -1,0 +1,16 @@
+{
+  "phone": "14152007986",
+  "valid": true,
+  "format": {
+    "international": "+14152007986",
+    "local": "(415) 200-7986"
+  },
+  "country": {
+    "code": "US",
+    "name": "United States",
+    "prefix": "+1"
+  },
+  "location": "California",
+  "type": "mobile",
+  "carrier": "T-Mobile USA, Inc."
+}

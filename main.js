@@ -29,6 +29,14 @@ let infosec = document.getElementById('infosec')
 let ipBtn = document.getElementById('track')
 let phoneBtn = document.getElementById('track-phone')
 let alertBox = document.getElementById('alert')
+let phoneNum = document.getElementById('phone-number')
+let localNum = document.getElementById('local-number')
+let numCountry = document.getElementById('numCountry')
+let userLocation = document.getElementById('location')
+let type = document.getElementById('type')
+let carrier = document.getElementById('carrier')
+let numPrompt = document.getElementById('phone-number-prompt')
+let show = document.getElementById('show')
 
 phoneToggle.addEventListener('click',()=>{
     phoneToggle.classList.add('selected')
@@ -145,7 +153,8 @@ ipBtn.addEventListener('click', async () => {
         alertBox.style.display = 'block'
         setTimeout(function() {
             alertBox.style.display = 'none';
-        }, 3000);
+        }, 5000);
+        return
     }
 
     try {
@@ -195,6 +204,63 @@ ipBtn.addEventListener('click', async () => {
         hideLoadingState()
     } catch (error) {
         console.error(`Error description: ${error}`)
+    }finally{
+        hideLoadingState()
+    }
+})
+
+phoneBtn.addEventListener('click', async()=>{
+    let isDev = false
+    let apiUrl
+
+    let phoneNumber = phoneInput.value
+    let phoneNumberTrim = phoneNumber.trim()
+    if(!phoneNumberTrim){
+        alertBox.textContent = 'Please enter a valid Phone Number to search'
+        alertBox.style.display = 'block'
+        setTimeout(function() {
+            alertBox.style.display = 'none';
+        }, 5000);
+        return
+    }
+
+     if (!isDev) {
+        devMode.style.display = 'none';
+        apiUrl = `https://phonevalidation.abstractapi.com/v1/?api_key=4bdae271e60a4604b7afe511adf8194d&phone=${phoneNumberTrim}`;
+    } else {
+        devMode.style.display = 'block';
+        apiUrl = `./mock phone num response.json`;
+    }
+
+    showLoadingState()
+
+    try {
+        const response = await fetch(apiUrl)
+         if(response.status === 404){
+            alertBox.textContent = 'Phone Number Not Found ☹️'
+            alertBox.style.display = 'block'
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+            }, 5000);
+            return
+        }else if(!response.ok){
+            console.log(`There was an error: ${response.status}`)
+            return
+        }
+
+        const data = await response.json()
+
+        phoneNum.textContent = data.format.international
+        localNum.textContent = data.format.local
+        numCountry.textContent = data.country.name
+        userLocation.textContent = data.location 
+        type.textContent = data.type
+        carrier.textContent = data.carrier
+        
+        numPrompt.style.display = 'none'
+        show.style.display = 'flex'
+    } catch (error) {
+        console.error(`An error ocuured. Error Info: ${error}`)
     }finally{
         hideLoadingState()
     }

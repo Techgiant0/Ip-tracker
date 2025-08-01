@@ -39,7 +39,7 @@
             <div class="alert" id="alert"></div>
 
             <div class="phone-input-section input-section hidden">
-                <input type="text" id="phone-input" class="search" placeholder="Enter Valid Phone Number">
+                <input type="text" id="phone-input" class="search" placeholder="Enter Phone Number with country code without +">
                 <input type="button" value="Track" id="track-phone" class="track">
             </div>
             <div class="alert" id="alert"></div>
@@ -59,30 +59,30 @@
                         <div class="infosec1">
                             <div class="ip-address">
                                 <small>🌐IP Address</small>
-                                <span id="ip-address">192.168.1.1</span>
+                                <span id="ip-address"></span>
                             </div>
                             <div class='city'>
                                 <small>🏙️City</small>
-                                <span id="city">Mountain View</span>
+                                <span id="city"></span>
                             </div>
                             <div class="country">
                                 <small>🌎Country</small>
-                                <span id="country">USA</span>
+                                <span id="country"></span>
                             </div>
                         </div>
                     
                         <div class="infosec2">
                             <div class="longitude">
                                 <small>🚥Latitude</small>
-                                <span id="lat">37.386</span>
+                                <span id="lat"></span>
                             </div>
                             <div class='latitude'>
                                 <small>🚦Longitude</small>
-                                <span id="long"> -122.0838</span>
+                                <span id="long"></span>
                             </div>
                             <div class="org">
                                 <small>🥅Organization</small>
-                                <span id="org">Google LLC</span>
+                                <span id="org"></span>
                             </div>
                         </div>
                     </div>
@@ -91,34 +91,34 @@
                         <div class="infosec3">
                             <div class="capital">
                                 <small>🧢Capital</small>
-                                <span id="capital">Washington</span>
+                                <span id="capital"></span>
                             </div>
 
                             <div class="version">
                                 <small>🆚Version</small>
-                                <span id="version">IPv4</span>
+                                <span id="version"></span>
                             </div>
 
                             <div class="time-zone">
                                 <small>⌚Timezone</small>
-                                <span id="timezone">UTC</span>
+                                <span id="timezone"></span>
                             </div>
                         </div>
 
                         <div class="infosec4">
                             <div class="network">
                                 <small>🕸️Network</small>
-                                <span id="network">94035</span>
+                                <span id="network"></span>
                             </div>
 
                             <div class="asn">
                                 <small>🧑‍💻ASN</small>
-                                <span id="asn">AS15169</span>
+                                <span id="asn"></span>
                             </div>
 
                             <div class="currency">
                                 <small>💵Currency</small>
-                                <span id="currency">Dollar</span>
+                                <span id="currency"></span>
                             </div>
                         </div>
                     </div>
@@ -138,35 +138,41 @@
                 </div>
 
                 <div class="phone-section hidden">
-                     <div class="infosec1">
+                    <div id="phone-number-prompt">
+                        <p>Enter a valid phone number without + and search to view Info</p>
+                    </div>
+
+                    <div id="show" class="hidden">
+                        <div class="infosec1">
                             <div class="phone-number">
                                 <small>🔢Phone Number</small>
-                                <span>+23412345678</span>
+                                <span id="phone-number"></span>
                             </div>
                             <div class='format'>
                                 <small>📃Local Format</small>
-                                <span>08112345678</span>
+                                <span id="local-number"></span>
                             </div>
                             <div class="country">
                                 <small>🌎Country</small>
-                                <span>USA</span>
+                                <span id="numCountry"></span>
                             </div>
                         </div>
                     
                         <div class="infosec2">
                             <div class="location">
                                 <small>📍Location</small>
-                                <span>USA</span>
+                                <span id="location"></span>
                             </div>
                             <div class='type'>
                                 <small>🌀Type</small>
-                                <span>Mobile</span>
+                                <span id="type"></span>
                             </div>
                             <div class="carrier">
                                 <small>🛰️Carrier</small>
-                                <span>MTN</span>
+                                <span id="carrier"></span>
                             </div>
                         </div>
+                    </div>
                 </div>
 
                 <div id="map-section">
