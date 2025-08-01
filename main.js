@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(!response.ok){
         throw new Error(`HTTP error status: ${response.status}`)
     }
-    const data = await response.json();
+    const data = await response.json()
 
     const lat = data.latitude;
     const lon = data.longitude;
@@ -148,7 +148,7 @@ ipBtn.addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch(`https://ipapi.co/${searchIp}/json/`)
+        const response = await fetch(`https://ipapi.co/${searchIp.trim()}/json/`)
         if(response.status === 404){
             alertBox.textContent = 'IP Address Not Found ☹️'
             alertBox.style.display = 'block'
@@ -162,7 +162,14 @@ ipBtn.addEventListener('click', async () => {
         }
 
         const data = await response.json()
-
+        if(data.reserved){
+            alertBox.textContent = `You can't access ${data.ip}, it's reserved ☹️`
+            alertBox.style.display = 'block'
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+            }, 3000);
+            return
+        }
         const lat = data.latitude;
         const lon = data.longitude;
 
