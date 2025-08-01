@@ -90,7 +90,7 @@ function hideLoadingState(){
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const isDev = true; // Set to true if you want to use the mock data
+  const isDev = false; // Set to true if you want to use the mock data
   let apiUrl
 
    if (!isDev) {
