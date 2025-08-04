@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 ipBtn.addEventListener('click', async () => {
-    showLoadingState()
+    
     const searchIp = ipInput.value
     const ipAddress = searchIp.trim()
     if(!ipAddress){
@@ -156,6 +156,8 @@ ipBtn.addEventListener('click', async () => {
         }, 5000);
         return
     }
+
+    showLoadingState()
 
     try {
         const response = await fetch(`https://ipapi.co/${ipAddress}/json/`)
